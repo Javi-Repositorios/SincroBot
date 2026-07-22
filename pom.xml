@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.5</version>
+		<version>4.1.0</version>
 		<relativePath/>
 	</parent>
 
@@ -16,10 +16,22 @@
 
 	<properties>
 		<java.version>21</java.version>
-		<spring-ai.version>1.0.0-M1</spring-ai.version>
+		<!-- Eliminamos spring-ai.version de aquí para que el BOM mande -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
+
+	<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-bom</artifactId>
+            <version>2.0.0</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
 
 	<dependencies>
 		<!-- SPRING BOOT -->
@@ -36,15 +48,19 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<!-- SPRING AI -->
-		<dependency>
-			<groupId>org.springframework.ai</groupId>
-			<artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
+		<!-- SPRING AI (Gestionadas por el BOM, sin <version>) -->
+			<dependency>
+		   <groupId>org.springframework.ai</groupId>
+		   <artifactId>spring-ai-starter-model-ollama</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.ai</groupId>
-			<artifactId>spring-ai-pgvector-store-spring-boot-starter</artifactId>
-		</dependency>
+	<groupId>org.springframework.ai</groupId>
+	<artifactId>spring-ai-starter-vector-store-pgvector</artifactId>
+</dependency>
+		<dependency>
+    <groupId>org.springframework.ai</groupId>
+    <artifactId>spring-ai-starter-model-chat-memory-repository-jdbc</artifactId>
+</dependency>
 
 		<!-- BASE DE DATOS Y SEGURIDAD -->
 		<dependency>
@@ -78,43 +94,45 @@
 		</dependency>
 	</dependencies>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.ai</groupId>
-				<artifactId>spring-ai-bom</artifactId>
-				<version>${spring-ai.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
-	
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<filtering>false</filtering>
-			</resource>
-		</resources>
-	</build>
-	
-	
+    <resources>
+        <resource>
+            <directory>src/main/resources</directory>
+            <filtering>false</filtering> <!-- Evita que el plugin intente decodificar el archivo -->
+        </resource>
+    </resources>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+    </plugins>
+</build>
+
+
 	<repositories>
-		<repository>
-			<id>spring-milestones</id>
-			<name>Spring Milestones</name>
-			<url>https://repo.spring.io/milestone</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
+    <repository>
+        <id>central</id>
+        <url>https://repo.maven.apache.org/maven2</url>
+    </repository>
+  <repository>
+    <id>spring-snapshots</id>
+    <name>Spring Snapshots</name>
+    <url>https://repo.spring.io/snapshot</url>
+    <releases>
+      <enabled>false</enabled>
+    </releases>
+  </repository>
+  <repository>
+    <name>Central Portal Snapshots</name>
+    <id>central-portal-snapshots</id>
+    <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+    <releases>
+      <enabled>false</enabled>
+    </releases>
+    <snapshots>
+      <enabled>true</enabled>
+    </snapshots>
+  </repository>
+</repositories>
 </project>

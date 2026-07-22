@@ -151,6 +151,15 @@
         const chatMessages = document.getElementById('chatMessages');
         const userInput = document.getElementById('userInput');
         const sendBtn = document.getElementById('sendBtn');
+		
+		// Genera un ID dinámico persistente durante la sesión de navegación
+		let sessionId = localStorage.getItem('sincrostock_chat_id');
+		if (!sessionId) {
+		    sessionId = crypto.randomUUID();
+		    localStorage.setItem('sincrostock_chat_id', sessionId);
+		}
+		
+		
 
         // Permite enviar mensaje al presionar la tecla Enter
         userInput.addEventListener('keypress', function (e) {
@@ -159,41 +168,41 @@
             }
         });
 
-        async function sendMessage() {
-            const text = userInput.value.trim();
-            if (!text) return;
+		async function sendMessage() {
+		    const text = userInput.value.trim();
+		    if (!text) return;
 
-            // Renderiza el mensaje del usuario
-            appendMessage(text, 'user');
-            userInput.value = '';
-            setLoading(true);
+		    appendMessage(text, 'user');
+		    userInput.value = '';
+		    setLoading(true);
 
-            // Crea un mensaje de carga para el bot
-            const loadingMsgDiv = appendMessage('Consultando...', 'bot');
+		    const loadingMsgDiv = appendMessage('Consultando...', 'bot');
 
-            try {
-                // Peticion HTTP POST al backend a traves del proxy NGINX (/api/chat)
-                const response = await fetch('/api/chat', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'text/plain'
-                    },
-                    body: text
-                });
+		    try {
+		        // Corrección: El parámetro de consulta debe llamarse "chatId"
+		        const response = await fetch(`/api/chat?chatId=${encodeURIComponent(sessionId)}`, {
+		            method: 'POST',
+		            headers: {
+		                'Content-Type': 'text/plain;charset=UTF-8'
+		            },
+		            body: text
+		        });
 
-                if (!response.ok) {
-                    throw new Error(`Error en el servidor: ${response.status}`);
-                }
+		        if (!response.ok) {
+		            throw new Error(`Error en el servidor: ${response.status}`);
+		        }
 
-                const data = await response.text();
-                loadingMsgDiv.textContent = data;
-            } catch (error) {
-                loadingMsgDiv.textContent = 'Error al comunicarse con el servidor.';
-                console.error('Fetch Error:', error);
-            } finally {
-                setLoading(false);
-                scrollToBottom();
-            }
+		        const data = await response.text();
+		        loadingMsgDiv.textContent = data;
+		    } catch (error) {
+		        loadingMsgDiv.textContent = 'Error al comunicarse con el servidor.';
+		        console.error('Fetch Error:', error);
+		    } finally {
+		        setLoading(false);
+		        scrollToBottom();
+		    }
+		
+		
         }
 
         function appendMessage(text, sender) {

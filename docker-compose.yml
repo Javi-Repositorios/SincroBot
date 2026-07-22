@@ -24,6 +24,7 @@ services:
     working_dir: /app
     volumes:
       - .:/app
+      - maven-repo:/root/.m2
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/sincrostock
       - SPRING_DATASOURCE_USERNAME=admin
@@ -36,7 +37,7 @@ services:
         condition: service_healthy
     networks:
       - sincro_net
-    command: mvn spring-boot:run -Dspring-boot.run.arguments="--skipTests" -Dmaven.test.skip=true
+    command: mvn spring-boot:run -Dmaven.test.skip=true
 
   gateway:
     image: nginx:alpine
@@ -54,3 +55,6 @@ services:
 networks:
   sincro_net:
     driver: bridge
+
+volumes:
+  maven-repo:
