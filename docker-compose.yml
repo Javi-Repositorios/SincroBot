@@ -1,0 +1,56 @@
+services:
+  db:
+    image: pgvector/pgvector:pg15
+    container_name: postgres_sincrobot
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: sincrostock
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./servidorspring-data:/var/lib/postgresql/data
+    networks:
+      - sincro_net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d sincrostock"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    image: maven:3.9-eclipse-temurin-21
+    container_name: server_sincrobot
+    working_dir: /app
+    volumes:
+      - .:/app
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/sincrostock
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=1234
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - sincro_net
+    command: mvn spring-boot:run -Dspring-boot.run.arguments="--skipTests" -Dmaven.test.skip=true
+
+  gateway:
+    image: nginx:alpine
+    container_name: cliente_sincrobot
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./cliente_frontend:/usr/share/nginx/html:ro
+    depends_on:
+      - app
+    networks:
+      - sincro_net
+
+networks:
+  sincro_net:
+    driver: bridge

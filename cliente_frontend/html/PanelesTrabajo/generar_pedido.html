@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Ventas - Nuevo Pedido</title>
+      <link rel="stylesheet" href="/css/mix.css">
+    
+   
+</head>
+
+
+	
+<body>
+		
+
+				<nav>
+				    <h2>Ventas Sincrostock</h2>   
+					<button class="btn-logout" onclick="volver()"> Volver</button>
+				    <button class="btn-logout" onclick="cerrarSesion()">Cerrar Sesión</button>				
+				</nav>
+				
+		<main>
+	
+	    <div class="card">
+	    <h2>Realizar Pedido / Inventario</h2>
+	    
+	    <div class="card" style="margin-bottom: 20px;">
+	    <label><strong>Seleccionar Cliente:</strong></label>
+	    <select id="select-clientes" style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 300px;">
+	        <option value="">-- Cargando clientes... --</option>
+	    </select>
+		</div>
+	    
+    
+    
+	    <p>Introduce las cantidades y pulsa "Tramitar Pedido". El sistema verificará el stock automáticamente.</p>
+	
+	    <table id="tabla-inventario">
+	        <thead>
+	            <tr>
+	                <th>ID</th>
+	                <th>Producto</th>
+	                <th>Precio</th>
+	                <th>Stock Actual</th>
+	                <th style="width: 150px;">Cantidad a Pedir</th>
+	            </tr>
+	        </thead>
+	        <tbody id="cuerpo-inventario">
+	            <tr>
+	                <td colspan="5" style="text-align:center;">Cargando inventario...</td>
+	            </tr>
+	        </tbody>
+	    </table>
+
+		<div style="margin-top: 20px; text-align: right;">
+		     <button class="btn btn-add" onclick="validarYProcesarPedido()" id="btn-pedido">Tramitar Pedido</button>
+		</div>
+			
+	
+
+
+<script src="/js/generarPedido.js"></script> 
+
+</main>
+</body>
+
+</html>

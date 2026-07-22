@@ -1,0 +1,21 @@
+ body { font-family: 'Segoe UI', sans-serif; background: #f4f7f6; margin: 0; display: flex; }
+        nav { width: 250px; background: #2c3e50; color: white; height: 100vh; padding: 20px; box-sizing: border-box; position: fixed; }
+        main { margin-left: 250px; flex-grow: 1; padding: 40px; width: calc(100% - 250px); }
+        .card { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        
+        /* Formulario */
+        .form-group { display: flex; gap: 10px; margin-bottom: 20px; align-items: flex-end; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+        .form-group div { display: flex; flex-direction: column; }
+        input { padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+        
+        /* Tabla */
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #27ae60; color: white; }
+        
+        /* Botones */
+        .btn { padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        .btn-add { background: #27ae60; color: white; }
+        .btn-edit { background: #f1c40f; color: #333; margin-right: 5px; }
+        .btn-delete { background: #e74c3c; color: white; }
+        .btn-logout { background: #c0392b; color: white; width: 100%; margin-top: 20px; }

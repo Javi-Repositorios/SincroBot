@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Ventas - Mis Pedidos</title>
+     <link rel="stylesheet" href="/css/mix.css">
+
+</head>
+<body>
+
+<nav>
+    <h2>Ventas Sincrostock</h2>   
+    <button class="btn-logout" onclick="cerrarSesion()">Cerrar Sesión</button>
+</nav>
+
+<main>
+    <div class="card">
+        <div class="header-flex">
+        
+            <h1>Bienvenido <strong id="nombre-vendedor"></strong></h1>
+           
+        </div>
+
+        <div class="botonera">
+                      
+            
+            <button class="btn-primary" id= "btnNuevoPedido" onclick="location.href='generar_pedido.html'">+ Nuevo Pedido</button>
+           
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID Pedido</th>
+                    <th>Fecha</th>
+                    <th>Cliente</th>
+                    <th>Total</th>
+                  
+                </tr>
+            </thead>
+            <tbody id="tabla-pedidos">
+                <tr><td colspan="5">Cargando pedidos...</td></tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<script src="/js/ventas.js"></script> 
+</body>
+</html>

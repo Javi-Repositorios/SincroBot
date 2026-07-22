@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Panel de Control - Director</title>
+    <meta charset="UTF-8">
+   
+    <link rel="stylesheet" href="/css/estilo_base.css">
+</head>
+
+
+<body>
+    <div class="container">
+        <h2>Bienvenido.<br>Elija su área de trabajo:</h2>
+
+        <button onclick="window.location.href='PanelesTrabajo/Direccion.html'">
+            GESTIÓN DE EMPRESA (Director)
+        </button>
+
+        <button onclick="window.location.href='PanelesTrabajo/Ventas.html'">
+            PANEL DE VENTAS (Vendedor)
+        </button>
+
+        <hr>
+        
+        <a href="../index.html" onclick="localStorage.clear()">Cerrar Sesión</a>
+    </div>
+    
+     <script src="../js/validaRolDirector.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Trbajadores - Sincrostock</title>
+    <link rel="stylesheet" href="/css/admin_trabajadores.css">
+</head>
+<body>
+
+<nav>
+    <h2>Trabajadores - Sincrostock</h2>
+    <hr>
+    <ul style="list-style: none; padding: 0;">
+        <li onclick="location.href='Direccion.html'" style="cursor:pointer; padding: 10px;"> Inicio</li>
+        <li onclick="location.href='Admin_Trabajadores.html'" style="cursor:pointer; padding: 10px; background: #34495e;">Trabajadores</li>
+        <li onclick="location.href='Admin_Articulos.html'" style="cursor:pointer; padding: 10px;">Productos</li>
+        <li onclick="location.href='Admin_Clientes.html'" style="cursor:pointer; padding: 10px;">Clientes</li>
+        
+    </ul>
+    <button class="btn btn-logout" onclick="logout()">Cerrar Sesión</button>
+</nav>
+
+<main>
+    <div class="card">
+        <h1>Gestión de Trabajadores</h1>
+        <h2> Puedes crear, editar, borrar y ver trabajadores.</h2>
+
+        <form id="form-usuario" class="form-group">
+		    <input type="hidden" id="usuario-id"> 
+		    
+		    <div>
+		        <label>Usuario (Login):</label>
+		        <input type="text" id="username" placeholder="ej: javierms" required>
+		    </div>
+		    <div>
+		        <label>Nombre:</label>
+		        <input type="text" id="nombre-real" placeholder="Javier">
+		    </div>
+		    <div>
+		        <label>Apellidos:</label>
+		        <input type="text" id="apellidos" placeholder="Martínez">
+		    </div>
+		    <div>
+		        <label>Contraseña:</label>
+		        <input type="password" id="password" placeholder="Mín. 4 caracteres">
+		    </div>
+		
+		    <div id="contenedor-roles" style="margin-top: 15px; border: 1px solid #ddd; padding: 10px; border-radius: 4px; background: #fff;">
+		        <label><strong> Roles:</strong></label>
+		        <div id="lista-checkboxes" style="margin-top: 5px;">
+		            Cargando roles...
+		        </div>
+		    </div>
+		   
+		    <button type="submit" class="btn btn-add" id="btn-submit" style="margin-top: 15px;">Guardar Trabajador</button>
+		    <button type="button" class="btn" id="btn-cancelar" style="display:none; margin-top: 15px;" onclick="resetForm()">Cancelar</button>
+		</form>
+		
+        <table>
+            <thead>
+				    <tr>
+				        <th>Username</th>
+				        <th>Nombre</th>
+				        <th>Apellido</th> <th>Password</th>
+				        <th>Rol</th>
+				        <th>Acciones</th> 
+				    </tr>
+				</thead>
+            <tbody id="tabla-usuarios">
+                <tr><td colspan="5">Cargando trabajadores...</td></tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+
+  
+   <script src="/js/admin_trabajadores.js"></script> 
+</body>
+</html>

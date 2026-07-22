@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Control - Dirección</title>
+   <!--
+    <script src="js/validaRolDirector.js"></script>
+    -->
+    <link rel="stylesheet" href="/css/direccion.css">
+    <style>
+       
+    </style>
+</head>
+<body>
+
+<nav>
+    <h2>Direccion - Sincrostock</h2>
+    <hr>
+    <ul style="list-style: none; padding: 0;">
+        <li onclick="location.href='Direccion.html'" style="cursor:pointer; padding: 10px; background: #34495e;"> Inicio</li>
+        <li onclick="location.href='Admin_Trabajadores.html'" style="cursor:pointer; padding: 10px;">Trabajadores</li>
+        <li onclick="location.href='Admin_Articulos.html'" style="cursor:pointer; padding: 10px;">Productos</li>
+        <li onclick="location.href='Admin_Clientes.html'" style="cursor:pointer; padding: 10px;">Clientes</li>
+		<li onclick="location.href='Chat.html'" style="cursor:pointer; padding: 10px;">Chat</li>
+    </ul>
+    <button class="btn btn-logout" onclick="cerrarSesion()">Cerrar Sesión</button>
+</nav>
+
+<main>
+    <div class="card">
+        <h1>Estadísticas Globales</h1>
+
+        <div class="estadisticas_div">
+            <div class="stat-card">
+                <h3>ARTICULO MÁS VENDIDO</h3>
+                <p id="txt-articulo-top" class="highlight">Cargando...</p>
+            </div>
+            <div class="stat-card">
+                <h3>MEJOR VENDEDOR</h3>
+                <p id="txt-vendedor-top" class="highlight">Cargando...</p>
+            </div>
+        </div>
+
+        <hr>
+
+        <h2>Historial Completo de Pedidos</h2>
+          <div class="filtros-container" style="display: flex; gap: 10px; margin-bottom: 15px;">
+				    <input type="text" id="filtro-vendedor" placeholder="Filtrar por vendedor..." onkeyup="filtrarPedidos()">
+				    <input type="text" id="filtro-cliente" placeholder="Filtrar por cliente..." onkeyup="filtrarPedidos()">
+				    <input type="date" id="filtro-fecha" onchange="filtrarPedidos()">
+				    <button onclick="limpiarFiltros()">Limpiar</button>
+				</div>
+   
+   
+      
+
+        <table class="tabla-acordeon">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Fecha</th>
+                    <th>Vendedor</th>
+                    <th>Cliente</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-pedidos-body">
+                </tbody>
+        </table>
+    </div>
+
+    </div>
+</main>
+
+<script src="/js/direccion.js"></script>
+</body>
+</html>

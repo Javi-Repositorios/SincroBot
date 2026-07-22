@@ -1,0 +1,79 @@
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background: #f4f7f6; 
+    margin: 0; 
+    display: flex; 
+    justify-content: center; 
+    /* Cambiamos align-items a flex-start para que si la página crece, se pueda hacer scroll */
+    align-items: flex-start; 
+    /* Cambiamos height por min-height para no cortar el contenido */
+    min-height: 100vh; 
+    color: #2c3e50;
+    padding: 20px; /* Un poco de aire en los bordes en móviles */
+    box-sizing: border-box;
+}
+
+.container {
+    background: white; 
+    padding: 20px; /* Bajamos un poco el padding para que quepa más */
+    border-radius: 12px; 
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1); 
+    text-align: center;
+    
+    /* EL CAMBIO CLAVE: */
+    width: 100%; 
+    max-width: 1200px; /* Ahora puede estirarse hasta 1200px (ideal para tablas) */
+    margin: 20px auto; /* Centrado y con margen arriba/abajo */
+}
+
+/* Para que las tablas no se rompan en móviles */
+.table-responsive {
+    overflow-x: auto;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+h2 {
+    margin-bottom: 30px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* Botonera */
+button { 
+    width: 100%;
+    padding: 20px; 
+    margin: 10px 0;
+    border: none; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    font-size: 1rem;
+    font-weight: bold; 
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+
+
+
+
+a { 
+    display: inline-block;
+    color: #e74c3c; 
+    text-decoration: none; 
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+a:hover {
+    color: #c0392b;
+    border-bottom: 1px solid #c0392b;
+}
