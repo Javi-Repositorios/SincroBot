@@ -1,5 +1,9 @@
 const token = localStorage.getItem('token');
+
+
+
 const urlBase = "http://localhost/api/articulos";
+
 
 if (!token) {
     location.href = '/index.html';
@@ -73,10 +77,11 @@ if (formulario) {
         try {
             const res = await fetch(url, {
                 method: metodo,
-                headers: { 
-                    'Authorization': 'Bearer ' + token,
-                    'Content-Type': 'application/json' 
-                },
+				headers: { 
+				                    'Authorization': 'Bearer ' + token,
+				                    'Content-Type': 'application/json',
+				                    'Accept': 'application/json'
+				                },
                 body: JSON.stringify(articuloData)
             });
 

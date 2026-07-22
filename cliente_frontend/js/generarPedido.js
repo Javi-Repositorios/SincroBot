@@ -1,7 +1,15 @@
 // Leer el token
     const token = localStorage.getItem('token');
-	const urlBase = "http://localhost/api/articulos";
-	const urlClientes = "http://localhost/api/clientes";
+	
+	
+	// Definición centralizada del servidor backend
+	const BACKEND_URL = "http://localhost/api"; 
+
+	const urlBase = `${BACKEND_URL}/articulos`;
+	const urlClientes = `${BACKEND_URL}/clientes`;
+	const urlPedidos = `${BACKEND_URL}/pedidos/guardar`;
+	
+
 
 
 //SEGURIDAD: El Portero
@@ -70,7 +78,7 @@
 		};
 	    //ENVIO AL SERVIDOR
 	    try {
-	        const res = await fetch("http://localhost/api/pedidos/guardar", {
+	        const res = await fetch(urlPedidos, {
 	            method: 'POST',
 	            headers: {
 	                'Authorization': 'Bearer ' + token,
