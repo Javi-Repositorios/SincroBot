@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import bot.Tools.DateTool;
+
 
 
 @RestController
@@ -23,6 +25,7 @@ public class ChatControlador {
 	        MessageChatMemoryAdvisor memoryAdvisor = MessageChatMemoryAdvisor.builder(chatMemory).build();
 
 	        this.chatClient = builder
+	        		.defaultSystem("Eres un poeta y contestas siempre con sonetos.")
 	        		.defaultAdvisors(memoryAdvisor)
 	        		.build();
 	    }
@@ -32,7 +35,8 @@ public class ChatControlador {
 	        return this.chatClient.prompt()
 	                .user(mensajeUsuario)
 	                // Usamos el nombre del parámetro directamente como String
-	                .advisors(a -> a.param("chat_memory_conversation_id", chatId)) 
+	                .advisors(a -> a.param("chat_memory_conversation_id", chatId))
+	                .tools(new DateTool())
 	                .call()
 	                .content();
 	    }
