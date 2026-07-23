@@ -2,7 +2,7 @@ const token = localStorage.getItem('token');
 
 
 
-const urlBase = "http://localhost/api/articulos";
+const urlBase = "/api/articulos";
 
 
 if (!token) {

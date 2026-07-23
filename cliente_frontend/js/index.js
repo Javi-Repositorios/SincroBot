@@ -9,7 +9,7 @@ document.getElementById('btn-login').addEventListener('click', async (e) => {
     e.preventDefault();
 	
 	const urlserver = "/api/trabajadores/login";
-	const urllocal = "http://localhost/api/trabajadores/login";
+	const urllocal = "/api/trabajadores/login";
 	
 	
 	
