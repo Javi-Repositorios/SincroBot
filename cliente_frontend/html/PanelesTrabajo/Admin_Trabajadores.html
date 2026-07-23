@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Gestión de Trbajadores - Sincrostock</title>
-    <link rel="stylesheet" href="/css/admin_trabajadores.css">
+    <link rel="stylesheet" href="/css/estilo_base.css">
 </head>
 <body>
 
 <nav>
     <h2>Trabajadores - Sincrostock</h2>
     <hr>
-    <ul style="list-style: none; padding: 0;">
-        <li onclick="location.href='Direccion.html'" style="cursor:pointer; padding: 10px;"> Inicio</li>
-        <li onclick="location.href='Admin_Trabajadores.html'" style="cursor:pointer; padding: 10px; background: #34495e;">Trabajadores</li>
-        <li onclick="location.href='Admin_Articulos.html'" style="cursor:pointer; padding: 10px;">Productos</li>
-        <li onclick="location.href='Admin_Clientes.html'" style="cursor:pointer; padding: 10px;">Clientes</li>
+    <ul>
+        <li onclick="location.href='Direccion.html'" > Inicio</li>
+        <li onclick="location.href='Admin_Trabajadores.html'" >Trabajadores</li>
+        <li onclick="location.href='Admin_Articulos.html'" >Artículos</li>
+        <li onclick="location.href='Admin_Clientes.html'" >Clientes</li>
         
     </ul>
     <button class="btn btn-logout" onclick="logout()">Cerrar Sesión</button>
@@ -25,35 +25,35 @@
         <h1>Gestión de Trabajadores</h1>
         <h2> Puedes crear, editar, borrar y ver trabajadores.</h2>
 
-        <form id="form-usuario" class="form-group">
+        <form class="form">
 		    <input type="hidden" id="usuario-id"> 
 		    
-		    <div>
-		        <label>Usuario (Login):</label>
-		        <input type="text" id="username" placeholder="ej: javierms" required>
-		    </div>
-		    <div>
+				<div class ="conjunto">
+		        <label>Username:</label>
+		        <input type="text" id="username" placeholder="Username" required>
+		  		</div>
+				<div class ="conjunto">
 		        <label>Nombre:</label>
-		        <input type="text" id="nombre-real" placeholder="Javier">
-		    </div>
-		    <div>
+		        <input type="text" id="nombre-real" placeholder="Nombre">
+				</div>
+				<div class ="conjunto">
 		        <label>Apellidos:</label>
-		        <input type="text" id="apellidos" placeholder="Martínez">
-		    </div>
-		    <div>
+		        <input type="text" id="apellidos" placeholder="Apellidos">
+				</div>
+				<div class ="conjunto">
 		        <label>Contraseña:</label>
-		        <input type="password" id="password" placeholder="Mín. 4 caracteres">
-		    </div>
+		        <input type="password" id="password" placeholder="Password">
+				</div>
 		
-		    <div id="contenedor-roles" style="margin-top: 15px; border: 1px solid #ddd; padding: 10px; border-radius: 4px; background: #fff;">
-		        <label><strong> Roles:</strong></label>
-		        <div id="lista-checkboxes" style="margin-top: 5px;">
+		    <div>
+		        <label> Roles:</label>
+		        <div id="lista-checkboxes">
 		            Cargando roles...
 		        </div>
 		    </div>
 		   
-		    <button type="submit" class="btn btn-add" id="btn-submit" style="margin-top: 15px;">Guardar Trabajador</button>
-		    <button type="button" class="btn" id="btn-cancelar" style="display:none; margin-top: 15px;" onclick="resetForm()">Cancelar</button>
+		    <button type="submit" class="btn btn-add" id="btn-submit" >Guardar Trabajador</button>
+		    <button type="button" class="btn" id="btn-cancelar" style="display:none" onclick="resetForm()">Cancelar</button>	
 		</form>
 		
         <table>

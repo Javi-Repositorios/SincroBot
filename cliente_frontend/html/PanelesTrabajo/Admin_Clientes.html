@@ -5,18 +5,18 @@
     <meta charset="utf-8" />
     <script src="../../js/validaRolDirector.js"></script>
     <script src="../../js/admin_clientes.js"></script>
-    <link rel="stylesheet" href="../../css/admin_articulos.css">
+    <link rel="stylesheet" href="../../css/estilo_base.css">
 </head>
 <body>
 
 <nav>
     <h2>Clientes - Sincrostock</h2>
     <hr>
-    <ul style="list-style: none; padding: 0;">
-        <li onclick="location.href='Direccion.html'" style="cursor:pointer; padding: 10px;"> Inicio</li>
-        <li onclick="location.href='Admin_Trabajadores.html'" style="cursor:pointer; padding: 10px;">Trabajadores</li>
-        <li onclick="location.href='Admin_Articulos.html'" style="cursor:pointer; padding: 10px;">Productos</li>
-        <li onclick="location.href='Admin_Clientes.html'" style="cursor:pointer; padding: 10px; background: #34495e;">Clientes</li>
+    <ul >
+        <li onclick="location.href='Direccion.html' "> Inicio</li>
+        <li onclick="location.href='Admin_Trabajadores.html'">Trabajadores</li>
+        <li onclick="location.href='Admin_Articulos.html'" >Artículos</li>
+        <li onclick="location.href='Admin_Clientes.html'" >Clientes</li>
        
     </ul>
     <button class="btn btn-logout" onclick="logout()">Cerrar Sesión</button>
@@ -29,20 +29,29 @@
         <h1>Gestión de Clientes</h1>
         <h2>Puedes crear, editar, borrar y ver Clientes.</h2>
 
-       <form id="form-cliente">
-		    <input type="text" id="nif" name="nif" required 
-		           pattern="[0-9]{8}[A-Z]" maxlength="9" 
-		           title="El NIF debe tener 8 números y una letra mayúscula (ej: 12345678Z)">
-		
+       <form class="form">
+			<div class ="conjunto">
+			<label>Nif:</label>
+		    <input type="text" id="nif" name="nif" required pattern="[0-9]{8}[A-Z]" maxlength="9"  title="El NIF debe tener 8 números y una letra mayúscula (ej: 12345678Z)">
+			</div>
+			<div class ="conjunto">
+			<label>Nombre:</label>
 		    <input type="text" id="nombre" name="nombre" required maxlength="100">
-		
+			</div>
+			<div class ="conjunto">
+			<label>Email:</label>
 		    <input type="email" id="email" name="email" required maxlength="100">
-		
+			</div>
+			<div class ="conjunto">
+			<label>Telefono:</label>
 		    <input type="tel" id="telefono" name="telefono" required maxlength="15">
-		
-		    <button type="submit" id="btn-submit"  class="btn btn-add">Guardar Cliente</button>
+			</div>
+			<div class ="conjunto">
+			<button type="submit" id="btn-submit"  class="btn btn-add">Guardar Cliente</button>
+			<button type="button" class="btn" id="btn-cancelar" style="display:none" onclick="resetForm()">Cancelar</button>	
+			</div>
 		</form>
-
+		
 
         <table>
             <thead>

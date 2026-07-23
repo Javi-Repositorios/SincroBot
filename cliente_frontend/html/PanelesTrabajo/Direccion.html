@@ -6,7 +6,7 @@
    <!--
     <script src="js/validaRolDirector.js"></script>
     -->
-    <link rel="stylesheet" href="/css/direccion.css">
+    <link rel="stylesheet" href="/css/estilo_base.css">
     <style>
        
     </style>
@@ -16,12 +16,12 @@
 <nav>
     <h2>Direccion - Sincrostock</h2>
     <hr>
-    <ul style="list-style: none; padding: 0;">
-        <li onclick="location.href='Direccion.html'" style="cursor:pointer; padding: 10px; background: #34495e;"> Inicio</li>
-        <li onclick="location.href='Admin_Trabajadores.html'" style="cursor:pointer; padding: 10px;">Trabajadores</li>
-        <li onclick="location.href='Admin_Articulos.html'" style="cursor:pointer; padding: 10px;">Productos</li>
-        <li onclick="location.href='Admin_Clientes.html'" style="cursor:pointer; padding: 10px;">Clientes</li>
-		<li onclick="location.href='Chat.html'" style="cursor:pointer; padding: 10px;">Chat</li>
+    <ul >
+        <li onclick="location.href='Direccion.html'">Inicio</li>
+        <li onclick="location.href='Admin_Trabajadores.html'">Trabajadores</li>
+        <li onclick="location.href='Admin_Articulos.html'">Artículos</li>
+        <li onclick="location.href='Admin_Clientes.html'">Clientes</li>
+		<li onclick="location.href='Chat.html'">Chat</li>
     </ul>
     <button class="btn btn-logout" onclick="cerrarSesion()">Cerrar Sesión</button>
 </nav>
@@ -44,11 +44,11 @@
         <hr>
 
         <h2>Historial Completo de Pedidos</h2>
-          <div class="filtros-container" style="display: flex; gap: 10px; margin-bottom: 15px;">
-				    <input type="text" id="filtro-vendedor" placeholder="Filtrar por vendedor..." onkeyup="filtrarPedidos()">
-				    <input type="text" id="filtro-cliente" placeholder="Filtrar por cliente..." onkeyup="filtrarPedidos()">
-				    <input type="date" id="filtro-fecha" onchange="filtrarPedidos()">
-				    <button onclick="limpiarFiltros()">Limpiar</button>
+          <div class="form" >
+				    <input type="text" class="filtro" placeholder="Filtrar por vendedor..." onkeyup="filtrarPedidos()">
+				    <input type="text" class="filtro" placeholder="Filtrar por cliente..." onkeyup="filtrarPedidos()">
+				    <input type="date" class="filtro" onchange="filtrarPedidos()">
+				    <button class="filtro" onclick="limpiarFiltros()">Limpiar</button>
 				</div>
    
    
