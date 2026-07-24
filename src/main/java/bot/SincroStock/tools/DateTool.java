@@ -1,4 +1,4 @@
-package bot.Tools;
+package bot.SincroStock.tools;
 
 import java.time.LocalDateTime;
 
