@@ -59,6 +59,9 @@ public class ChatControlador {
 	    
 	    @PostMapping
 	    public String responder(@RequestBody String mensajeUsuario, @RequestParam String chatId) {
+	    	
+	    	//Se responde desde el controlador, con la clase inyectada chatClient, que ya ha sido configurada arriba, en el constructor
+	        // con memoria, prompt, y acceso a pgvector.
 	        return this.chatClient.prompt()
 	                .user(mensajeUsuario)
 	                // Usamos el nombre del parámetro directamente como String
